@@ -4,7 +4,7 @@ import React from 'react';
 import HomePage from './components/HomePage/HomePage';
 import GamePage from './components/GamePage/GamePage';
 import Route from './components/common/Route';
-import './components/HomePage/HomePage.scss';
+import './components/HomePage/HomePage.css';
 
 function App() {
   return (
