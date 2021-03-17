@@ -13,7 +13,9 @@ function App() {
         <HomePage />
       </Route>
       <Route path="/game-page">
+        <div className="container">
         <GamePage />
+        </div>
       </Route>
     </div>
   );

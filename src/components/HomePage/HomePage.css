@@ -95,9 +95,6 @@ select {
     border-radius: 15px;
     box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
     border: solid 1px var(--white);
-    &:option{
-        padding-left: 20%;
-    }
 }
 .buttonStyle {
     display:flex;    
