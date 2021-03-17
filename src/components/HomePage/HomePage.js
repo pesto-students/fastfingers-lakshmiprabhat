@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import "./HomePage.css";
 import keyboardLogo from "../../assets/Icon-keyboard.svg";
-import GamePage from "../GamePage/GamePage";
 import playIcon from "../../assets/Icon-play.svg";
 
 export default function HomePage() {
