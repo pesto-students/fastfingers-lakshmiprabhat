@@ -22,7 +22,7 @@ const useForm = (submitFormFn,validate) =>{
             submitFormFn();
           }
         },
-        [errors]
+        [errors,isSubmitting]
       );
     
 
