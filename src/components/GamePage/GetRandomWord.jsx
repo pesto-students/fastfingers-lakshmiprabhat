@@ -1,4 +1,4 @@
-import data from "../../../data/dictionary.json";
+import data from "../common/dictionary.json";
 export const getRandomWordFromDictionary= (level) => {
     let filteredWords = data.filter( function(word){
         if (level === 1) {return word.length <=4;}

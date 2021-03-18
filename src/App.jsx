@@ -1,21 +1,12 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable linebreak-style */
-import React,{useState} from 'react';
-import HomePage from './components/HomePage/HomePage';
-import GamePage from './components/GamePage/GamePage';
+import React from 'react';
+import Home from '../src/Home';
 
 function App() {
-  const [isSubmitted,setIsSubmitted]=useState(false);
-  function submitForm(){
-    setIsSubmitted(true);
-  }
-  return (
+    return (
     <div>
-      {!isSubmitted ? (
-          <HomePage submitForm={submitForm} />
-        ) : (
-          <GamePage />
-        )}
+          <Home />    
     </div>
   );
 }

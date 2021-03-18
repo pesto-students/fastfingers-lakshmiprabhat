@@ -15,13 +15,13 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100%;
+    height: 100vh;
   }
   .gameContainer {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    width: 100vw;
+    width: 90vw;
    }
    .gameHeader {
        display: flex;
@@ -80,7 +80,7 @@ body {
 .timer{
     width: 30%;
     height: 40%;
-    margin: 2% 0 0 20%; 
+    margin: 2% 0 0 60%; 
 }
 .gameStop {
     display: flex;
