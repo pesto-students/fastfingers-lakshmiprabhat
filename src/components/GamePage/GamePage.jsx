@@ -7,7 +7,6 @@ import iconPerson from "../../assets/Icon-person.svg";
 import iconGamepad from "../../assets/Icon-gamepad.svg";
 import iconCross from "../../assets/Icon-cross.svg";
 import iconTimer from "../../assets/Icon-timer.svg";
-import GetRandomWord from "./GetRandomWord";
 
 export default function GamePage() {
   const userName = getDataFromLocalStorage('username');
