@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable linebreak-style */
-import React, { useState } from "react";
+import React from "react";
 import "./HomePage.scss";
 import keyboardLogo from "../../assets/Icon-keyboard.svg";
 import playIcon from "../../assets/Icon-play.svg";
