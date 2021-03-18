@@ -1,21 +1,16 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable linebreak-style */
 import React, { useState } from "react";
-import "./HomePage.css";
+import "./HomePage.scss";
 import keyboardLogo from "../../assets/Icon-keyboard.svg";
 import playIcon from "../../assets/Icon-play.svg";
+import {levels} from "../common/Util.jsx";
+import useForm from "./useForm";
+import validate from "../common/ValidateInputs";
 
-export default function HomePage() {
-  const [userName, setuserName] = useState("");
-  const [difficultyLevel, setdifficultyLevel] = useState("");
-  
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    window.history.pushState({}, "", '/game-page');
-    const eventRedirect = new PopStateEvent('popstate');
-        window.dispatchEvent(eventRedirect);
-  };
-  return (
+export default function HomePage({submitForm}) {
+  const {handleChange,handleSubmit,values,errors} = useForm(submitForm,validate);
+   return (
     <div className="container">
           <div className="keyboardImage">
             <img className="keyboardLogo" src={keyboardLogo} alt="keyboard" />
@@ -31,22 +26,20 @@ export default function HomePage() {
           <form className="formArea" onSubmit={handleSubmit}>
             <input
               type="text"
-              value={userName}
+              name="username"
               placeholder="TYPE YOUR NAME"
-              onChange={(e) => setuserName(e.target.value)}
-              required
+              value ={values.username}
+              onChange = {handleChange}
             />
-            <select
-              value={difficultyLevel}
-              onChange={(e) => setdifficultyLevel(e.target.value)}
-              required
-            >
-              <option value="1" selected>
-                EASY
-              </option>
-              <option value="2">MEDIUM</option>
-              <option value="3">HARD</option>
-            </select>
+            {errors.username && <p>{errors.username}</p>}
+            <select name="difficultyLevel" placeholder="DIFFICULTY LEVEL"
+             value ={values.difficultyLevel}
+             onChange = {handleChange}
+              >
+           {levels.map(item =>
+      <option key={item.level} value={item.level}>{item.levelDesc}</option>
+    )}
+  </select>
             <button
               className="buttonStyle"
               type="submit"
