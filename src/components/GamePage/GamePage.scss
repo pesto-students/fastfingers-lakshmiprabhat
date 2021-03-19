@@ -1,16 +1,17 @@
-:root{
+:root {
     --lightRed: #ff5155;
     --white: #ffffff;
     --evergreen: #032228;
-}
-* {
+  }
+  * {
     margin: 0;
     border: 0;
     padding: 0;
     box-sizing: border-box;
-}
-body {
-    background-image: url(../../assets/Background-image.svg), linear-gradient(to top, #063C47, #000000);
+  }
+  body {
+    background-image: url(../../assets/Background-image.svg),
+      linear-gradient(to top, #063c47, #000000);
     background-blend-mode: multiply;
     background-position: center;
     background-repeat: no-repeat;
@@ -22,47 +23,55 @@ body {
     flex-direction: column;
     height: 100vh;
     width: 90vw;
-   }
-   .gameHeader {
-       display: flex;
-       flex-direction: column;
-       width: 100%;
-       height: 20%;
-   }
-   .playerDetails{
-       display: flex;
-       width: 100%; 
-       height: 50%;
-       margin-left: 2%;
-   }
-   .headerTitle {
-       font-size: 35px;
-       color: var(--lightRed);
-       margin-left: 2%;
-   }
-   .headerTitleRight{
+  }
+  .gameHeader {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 20%;
+  }
+  .playerDetails {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    margin-left: 2%;
+    & .iconPerson {
+      height: 40px;
+      margin-top: 1%;
+    }
+  }
+  .headerTitle {
+    font-size: 35px;
+    color: var(--lightRed);
+    margin-left: 2%;
+    margin-top: 1%;
+    width: 30%;
+  }
+  .headerTitleRight {
     font-size: 35px;
     color: var(--lightRed);
     width: 60%;
     text-align: end;
-   }
-   .gameDetails{
-       display:flex;
-       width: 100%; 
-       margin: 0.5% 0 0 2%;
-   }
-   .gameLevel {
+    margin-left: 5%;
+  }
+  .gameDetails {
+    display: flex;
+    width: 100%;
+    margin: 0.5% 0 0 2%;
+  }
+  .gameLevel {
     font-size: 35px;
     color: var(--lightRed);
     margin-left: 2%;
-   }
-   .gameContent {
+    width: 30%;
+  }
+  .gameContent {
     display: flex;
     width: 100%;
     height: 70%;
-}
-.scoreBoard {
-    display:flex;
+  }
+  .scoreBoard {
+    display: flex;
     flex-direction: column;
     border-radius: 15px;
     border: solid 3px var(--lightRed);
@@ -70,27 +79,49 @@ body {
     width: 25%;
     margin: 1% 0 0 2%;
     color: var(--lightRed);
-}
-.typingSection{
+  }
+  .playArea {
     display: flex;
     flex-direction: column;
     width: 50%;
     height: 95%;
-}
-.timer{
+    margin-left: 20%;
+  }
+  .baseTimer {
+    position: relative;
+    height: 30%;
     width: 30%;
-    height: 40%;
-    margin: 2% 0 0 60%; 
-}
-.gameStop {
+    margin-left: 20%;
+  }
+  .baseTimerCircle {
+    fill: none;
+    stroke: none;
+  }
+  .baseTimerPathElapsed {
+    stroke-width: 7px;
+    stroke: grey;
+  }
+  .randomWord {
+    font-size: 3rem;
+    color: white;
+    font-weight: 500;
+    margin: 10% 0 0 15%;
+  }
+  .inputWordArea {
+    width: 50%;
+    height: 20%;
+    margin-left: 10%;
+  }
+  .gameStop {
     display: flex;
     width: 100%;
     height: 10%;
-}
-.stopButton{
+  }
+  .stopButton {
     font-size: 35px;
     color: var(--lightRed);
     text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
     background: none;
     cursor: pointer;
-}
+  }
+  

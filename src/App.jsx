@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable linebreak-style */
 import React from 'react';
-import Home from '../src/Home';
+import Home from './Home';
 
 function App() {
-    return (
+  return (
     <div>
-          <Home />    
+      <Home />
     </div>
   );
 }
