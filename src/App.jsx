@@ -1,11 +1,14 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable linebreak-style */
 import React from 'react';
+import Home from './Home';
 
-export default function GamePage() {
+function App() {
   return (
     <div>
-      <h1 className="text">Welcome to Game Page</h1>
+      <Home />
     </div>
   );
 }
+
+export default App;
