@@ -8,6 +8,7 @@ const useForm = (submitFormFn, validate) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
+    if (errors.username)
     setErrors(errors.username,'');
   };
   const handleSubmit = (event) => {
