@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable linebreak-style */
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import "./GamePage.scss";
 import { getDataFromLocalStorage } from "../common/Util";
 import iconPerson from "../../assets/Icon-person.svg";
@@ -17,11 +17,12 @@ export default function GamePage() {
   const [currentDifficultyLevel, setCurrentDifficultyLevel] = useState(
     difficultyLevel
   );
-  if (currentDifficultyLevel < 1.5) {
+  if (difficultyLevel < 1.5) {
     level = "EASY";
-  } else if (currentDifficultyLevel >= 1.5 && currentDifficultyLevel < 2) {
+  } else if (difficultyLevel >= 1.5 && difficultyLevel < 2) {
     level = "MEDIUM";
-  } else if (currentDifficultyLevel >= 2) level = "HARD";
+  } else if (difficultyLevel >= 2) level = "HARD";
+
   const getRandomWord = () => {
     let filteredWords = [];
     if (currentDifficultyLevel < 1.5) {
@@ -43,7 +44,8 @@ export default function GamePage() {
     if (randomWord === event.target.value) {
       getRandomWord();
       setCurrentDifficultyLevel(currentDifficultyLevel + 0.1);
-    }
+      setPlayerInput('');
+    };
   };
   return (
     <div className="gameContainer">
