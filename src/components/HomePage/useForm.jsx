@@ -8,6 +8,7 @@ const useForm = (submitFormFn, validate) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
+    setErrors(errors.username,'');
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,7 +21,7 @@ const useForm = (submitFormFn, validate) => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       submitFormFn();
     }
-  }, [errors, isSubmitting, submitFormFn]);
+  },[errors,submitFormFn,isSubmitting]);
 
   return { handleChange, handleSubmit, values, errors };
 };
