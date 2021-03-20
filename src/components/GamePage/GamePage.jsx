@@ -1,27 +1,21 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable linebreak-style */
-import React, {  useState } from "react";
+import React, {   useEffect, useState } from "react";
 import "./GamePage.scss";
 import { getDataFromLocalStorage } from "../common/Util";
-import iconPerson from "../../assets/Icon-person.svg";
-import iconGamepad from "../../assets/Icon-gamepad.svg";
+import {formatTimeLeft} from "../common/Util";
 import iconCross from "../../assets/Icon-cross.svg";
-import data from "../common/dictionary.json";
+import data from "../common/data/dictionary.json";
+import Header from "../common/Header/Header";
 
 export default function GamePage() {
-  const userName = getDataFromLocalStorage("username");
-  let level = "";
   const difficultyLevel = getDataFromLocalStorage("difficultyLevel");
-  const [randomWord, setRandomWord] = useState("alis");
+  const [randomWord, setRandomWord] = useState("");
   const [playerInput, setPlayerInput] = useState("");
+  const [timerValue,setTimerValue] = useState(0);
   const [currentDifficultyLevel, setCurrentDifficultyLevel] = useState(
     difficultyLevel
   );
-  if (difficultyLevel < 1.5) {
-    level = "EASY";
-  } else if (difficultyLevel >= 1.5 && difficultyLevel < 2) {
-    level = "MEDIUM";
-  } else if (difficultyLevel >= 2) level = "HARD";
 
   const getRandomWord = () => {
     let filteredWords = [];
@@ -37,6 +31,7 @@ export default function GamePage() {
     const randomIndex = Math.floor(Math.random() * filteredWords.length);
     const newrandomWord = filteredWords[randomIndex];
     setRandomWord(newrandomWord);
+    setTimerValue(Math.floor((newrandomWord.length)/currentDifficultyLevel));
   };
 
   const handleTextChange = (event) => {
@@ -47,20 +42,19 @@ export default function GamePage() {
       setPlayerInput('');
     };
   };
+  const handleStopGame = ()=>{
+    window.history.pushState({}, "", '/stopgame-page');
+    const redirectEvent = new PopStateEvent('popstate');
+    window.dispatchEvent(redirectEvent);
+  };
+  useEffect(()=>{
+    getRandomWord();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }
+  ,[]);
   return (
     <div className="gameContainer">
-      <div className="gameHeader">
-        <div className="playerDetails">
-          <img className="iconPerson" src={iconPerson} alt="person" />
-          <p className="headerTitle">{userName.toUpperCase()}</p>
-          <p className="headerTitleRight">fast fingers</p>
-        </div>
-        <div className="gameDetails">
-          <img src={iconGamepad} alt="gamepad" />
-          <p className="gameLevel">LEVEL : {level}</p>
-          <p className="headerTitleRight">SCORE: </p>
-        </div>
-      </div>
+      <Header showScore = {true}/>
       <div className="gameContent">
         <div className="scoreBoard">SCORE BOARD</div>
         <div className="playArea">
@@ -75,6 +69,9 @@ export default function GamePage() {
                 />
               </g>
             </svg>
+            <span>
+              {formatTimeLeft(timerValue)}
+            </span>
           </div>
           <div className="randomWord">
             <p>{randomWord}</p>
@@ -90,7 +87,7 @@ export default function GamePage() {
       </div>
       <div className="gameStop">
         <img src={iconCross} alt="stopgame" />
-        <button type="submit" className="stopButton">
+        <button type="submit" className="stopButton" onClick={handleStopGame}>
           STOP GAME
         </button>
       </div>

@@ -8,11 +8,8 @@ import { levels } from "../common/Util.jsx";
 import useForm from "./useForm";
 import validate from "../common/ValidateInputs";
 
-export default function HomePage({ submitForm }) {
-  const { handleChange, handleSubmit, values, errors } = useForm(
-    submitForm,
-    validate
-  );
+export default function HomePage() {
+  const { handleChange, handleSubmit, values, errors } = useForm(validate);
   return (
     <div className="container">
       <div className="keyboardImage">
