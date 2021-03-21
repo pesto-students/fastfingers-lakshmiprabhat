@@ -1,14 +1,10 @@
-.gameContainer {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 90vw;
-  }
+
   .contentCenter{
       display: flex;
       flex-direction: column;
       align-items: center;  
       margin-top: 4%;
+      justify-content: center;
       color: var(--white);
   }
   .score {
@@ -23,12 +19,15 @@
   }
   .playAgain{
       font-size: 40px;
-      color: var(--lightRed);
+      color: var(--lightRed);margin-top:0;
        }
-  .buttonStyle{
-      background: none;
-      cursor: pointer;
-  }
+       .buttonArea{
+           display:flex;
+           background: none;
+           width: 40%;
+           outline: none;
+           margin: 2% 0 0 15%;
+       }
   .reloadIcon{
       width: 38px;
       margin-right: 2%;
@@ -37,6 +36,6 @@
     background: none;
     font-size: 30px;
     color: var(--lightRed);
-    margin: 3% 0 0 2%;
+    margin: 7% 0 0 2%;
     cursor: pointer;
 }

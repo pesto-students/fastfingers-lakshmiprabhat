@@ -1,22 +1,25 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable linebreak-style */
-import React, {   useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./GamePage.scss";
-import { getDataFromLocalStorage } from "../common/Util";
-import {formatTimeLeft} from "../common/Util";
+import { saveDataToLocalStorage, getDataFromLocalStorage } from "../common/Util";
 import iconCross from "../../assets/Icon-cross.svg";
 import data from "../common/data/dictionary.json";
 import Header from "../common/Header/Header";
+import Timer from "./Timer";
+import ScoreBoard from "./ScoreBoard";
 
 export default function GamePage() {
-  const difficultyLevel = getDataFromLocalStorage("difficultyLevel");
+  const difficultyLevel = Number(getDataFromLocalStorage("difficultyLevel"));
   const [randomWord, setRandomWord] = useState("");
   const [playerInput, setPlayerInput] = useState("");
-  const [timerValue,setTimerValue] = useState(0);
+  const [timerValue, setTimerValue] = useState(-1);
   const [currentDifficultyLevel, setCurrentDifficultyLevel] = useState(
     difficultyLevel
-  );
-
+  );  
+  const [score,setScore] = useState(0);
+  const playerInputRef = React.createRef();
+   
   const getRandomWord = () => {
     let filteredWords = [];
     if (currentDifficultyLevel < 1.5) {
@@ -31,48 +34,49 @@ export default function GamePage() {
     const randomIndex = Math.floor(Math.random() * filteredWords.length);
     const newrandomWord = filteredWords[randomIndex];
     setRandomWord(newrandomWord);
-    setTimerValue(Math.floor((newrandomWord.length)/currentDifficultyLevel));
+    let newTimerValue = Math.floor(newrandomWord.length / currentDifficultyLevel);
+    if (newTimerValue > 2)
+    setTimerValue(newTimerValue);
+    else setTimerValue(2);
   };
 
   const handleTextChange = (event) => {
     setPlayerInput(event.target.value);
     if (randomWord === event.target.value) {
       getRandomWord();
-      setCurrentDifficultyLevel(currentDifficultyLevel + 0.1);
-      setPlayerInput('');
-    };
+      setCurrentDifficultyLevel(currentDifficultyLevel + 0.01);
+      setPlayerInput("");
+    }
   };
-  const handleStopGame = ()=>{
-    window.history.pushState({}, "", '/stopgame-page');
-    const redirectEvent = new PopStateEvent('popstate');
+
+  const handleScoreChange= currentScore => setScore(currentScore);
+
+  const handleStopGame = () => {
+    let scoreResults= getDataFromLocalStorage("scoresList");
+    let currentGame = getDataFromLocalStorage("currentGame");
+    scoreResults.push({currentGame,score});
+    saveDataToLocalStorage("currentGame",Number(currentGame)+1);
+    saveDataToLocalStorage("scoresList",scoreResults);
+    saveDataToLocalStorage('score',score);   
+    window.history.pushState({}, "", "/stopgame-page");
+    const redirectEvent = new PopStateEvent("popstate");
     window.dispatchEvent(redirectEvent);
   };
-  useEffect(()=>{
+  useEffect(() => {
     getRandomWord();
+      if (playerInputRef.current) {
+        playerInputRef.current.focus();
+      }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }
-  ,[]);
+  }, []);
+  
   return (
     <div className="gameContainer">
-      <Header showScore = {true}/>
+      <Header handleScoreChange = {handleScoreChange} showScore={true} />
       <div className="gameContent">
-        <div className="scoreBoard">SCORE BOARD</div>
+        <ScoreBoard />
         <div className="playArea">
-          <div className="baseTimer">
-            <svg className="baseTimerSvg" viewBox="0 0 100 100">
-              <g className="baseTimerCircle">
-                <circle
-                  className="baseTimerPathElapsed"
-                  cx="50"
-                  cy="50"
-                  r="45"
-                />
-              </g>
-            </svg>
-            <span>
-              {formatTimeLeft(timerValue)}
-            </span>
-          </div>
+          <Timer timerValue={timerValue} handleStopGame={handleStopGame}></Timer>
           <div className="randomWord">
             <p>{randomWord}</p>
           </div>
@@ -81,6 +85,7 @@ export default function GamePage() {
               type="text"
               value={playerInput}
               onChange={handleTextChange}
+              ref={playerInputRef}
             />
           </div>
         </div>
