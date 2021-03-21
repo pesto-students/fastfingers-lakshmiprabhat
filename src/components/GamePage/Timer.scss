@@ -1,0 +1,40 @@
+.baseTimer {
+    position: relative;
+    height: 30%;
+    width: 30%;
+    margin-left: 20%;
+  }
+  .baseTimerCircle {
+    fill: none;
+    stroke: none;
+  }
+  .baseTimerPathElapsed {
+    stroke-width: 7px;
+    stroke: grey;    
+  }
+ 
+  .baseTimerLabel{
+    position: absolute;
+    width: 5%;
+    height: 5%;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-top: 45%;
+    margin-left: 45%;
+    color: var(--white);
+  }
+  .baseTimerPathRemaining {
+    stroke-width: 7px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    stroke: currentColor;
+    color: var(--lightRed);
+}
+.baseTimerSvg {
+    transform: scaleX(-1);
+}
