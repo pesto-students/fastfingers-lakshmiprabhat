@@ -1,23 +1,3 @@
-:root {
-  --lightRed: #ff5155;
-  --white: #ffffff;
-  --evergreen: #032228;
-}
-* {
-  margin: 0;
-  border: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  background-image: url(../../assets/Background-image.svg),
-    linear-gradient(to top, #063c47, #000000);
-  background-blend-mode: multiply;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-}
 .container {
   display: flex;
   flex-direction: column;
@@ -81,6 +61,7 @@ input {
   box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
   background-color: var(--white);
   padding-left: 20px;
+  outline: none;
 }
 .formArea p {
   color: var(--lightRed);

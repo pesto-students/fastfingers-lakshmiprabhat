@@ -1,0 +1,20 @@
+:root {
+    --lightRed: #ff5155;
+    --white: #ffffff;
+    --evergreen: #032228;
+  }
+  * {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background-image: url(./assets/Background-image.svg),
+      linear-gradient(to top, #063c47, #000000);
+    background-blend-mode: multiply;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }

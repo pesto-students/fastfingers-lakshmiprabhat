@@ -3,7 +3,7 @@ import {formatTimeLeft, getDataFromLocalStorage} from "../common/Util";
 import "./GamePage.scss";
 
 export default function ScoreBoard(){
-    let scoresList = getDataFromLocalStorage("scoresList");
+    let scoresList = getDataFromLocalStorage("scoresList");    
     const highScore = Math.max(...scoresList.map(({ score }) => { return score }));
 
     const content = scoresList.map(({ currentGame, score }) => {
@@ -14,7 +14,7 @@ export default function ScoreBoard(){
                         <p className="personalBest">PERSONAL BEST</p>
                         : ''
                 }
-                <p className="scoreList">Game {currentGame}  : {formatTimeLeft(score)}</p>
+                <p className="scoreList">Game {currentGame}  : {formatTimeLeft(score*1000)}</p>
             </div>
         );
     });

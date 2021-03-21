@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../common/Header/Header";
 import "./StopGame.scss";
 import iconReload from "../../assets/Icon-reload.svg";
-import { getDataFromLocalStorage,formatTimeLeft } from "../common/Util";
+import { getDataFromLocalStorage } from "../common/Util";
 
 export default function StopGame() {
   let gameId = getDataFromLocalStorage('currentGame');
@@ -22,7 +22,7 @@ export default function StopGame() {
       <Header showScore={false} />
       <div className="contentCenter">
         <p className="score">SCORE: GAME {gameId-1}</p>
-        <p className="time">TIME: {formatTimeLeft(score)}</p>
+        <p className="time">TIME: {score}</p>
         <p className="highScore">New High Score : </p>
             <button className="buttonArea" onClick={handlePlayAgain}>
             <img className="reloadIcon" src={iconReload} alt="playagain" />

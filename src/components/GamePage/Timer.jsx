@@ -8,24 +8,25 @@ let timeOut = null;
 export default function Timer({timerValue,handleStopGame}){
     const [timeLeft,setTimeLeft] = useState(timerValue);
     const [timerStroke, setTimerStroke] = useState("283 283");
+   
     useEffect(() => {
         timePassed = 0;
         setTimeLeft(timerValue);
     }, [timerValue])// eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
-        timeOut = setInterval(() => {
-            const strokeWidth = (timeLeft/timerValue) * 283;
+        timeOut = setInterval(() => {            
             if (timeLeft > 0) {                
-                timePassed = timePassed += 1;
-                setTimeLeft(timerValue - timePassed);                
+                timePassed += 100;
+                setTimeLeft(timerValue - timePassed);    
+                const strokeWidth = calculateTimeFraction(timeLeft,timerValue);            
                 setTimerStroke(`${strokeWidth} 283`);
             }
             else if(timeLeft === 0) {
                 handleStopGame();
                 clearInterval(timeOut);
             }
-        }, 1000);
+        }, 100);
 
         return () => {
             clearInterval(timeOut);
@@ -61,4 +62,8 @@ export default function Timer({timerValue,handleStopGame}){
 Timer.ProtoTypes = {
    timerValue: ProtoTypes.number.isRequired,
    handleStopGame: ProtoTypes.func.isRequired
-};
+}
+function calculateTimeFraction(timeLeft, timerValue) {
+    const rawTimeFraction = timeLeft / timerValue;
+    return (rawTimeFraction - (1 / timerValue) * (1 - rawTimeFraction)) * 283;
+}
