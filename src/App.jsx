@@ -5,6 +5,7 @@ import HomePage from "./components/HomePage/HomePage";
 import GamePage from "./components/GamePage/GamePage";
 import Route from "./components/common/CustomRouter";
 import StopGame from "./components/StopGame/StopGame";
+import "./App.css";
 
 export default function App() {
   return (

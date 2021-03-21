@@ -42,7 +42,7 @@ export default function Header({ handleScoreChange,showScore }) {
       <div className="gameDetails">
         <img src={iconGamepad} alt="gamepad" />
         <p className="gameLevel">LEVEL : {level}</p>
-        {showScore ? <p className="headerTitleRight">SCORE: {formatTimeLeft(score)} </p> :''
+        {showScore ? <p className="headerTitleRight">SCORE: {formatTimeLeft(score*1000)} </p> :''
         }
       </div>
     </div>

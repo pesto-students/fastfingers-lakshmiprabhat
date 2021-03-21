@@ -8,6 +8,7 @@ import data from "../common/data/dictionary.json";
 import Header from "../common/Header/Header";
 import Timer from "./Timer";
 import ScoreBoard from "./ScoreBoard";
+import {formatTimeLeft} from "../common/Util";
 
 export default function GamePage() {
   const difficultyLevel = Number(getDataFromLocalStorage("difficultyLevel"));
@@ -34,10 +35,10 @@ export default function GamePage() {
     const randomIndex = Math.floor(Math.random() * filteredWords.length);
     const newrandomWord = filteredWords[randomIndex];
     setRandomWord(newrandomWord);
-    let newTimerValue = Math.floor(newrandomWord.length / currentDifficultyLevel);
-    if (newTimerValue > 2)
+    let newTimerValue = Math.floor(newrandomWord.length / currentDifficultyLevel)*1000;
+    if (newTimerValue > 2000)
     setTimerValue(newTimerValue);
-    else setTimerValue(2);
+    else setTimerValue(2000);
   };
 
   const handleTextChange = (event) => {
@@ -55,9 +56,10 @@ export default function GamePage() {
     let scoreResults= getDataFromLocalStorage("scoresList");
     let currentGame = getDataFromLocalStorage("currentGame");
     scoreResults.push({currentGame,score});
+    if (scoreResults.length > 7){scoreResults.shift();}
     saveDataToLocalStorage("currentGame",Number(currentGame)+1);
     saveDataToLocalStorage("scoresList",scoreResults);
-    saveDataToLocalStorage('score',score);   
+    saveDataToLocalStorage('score',formatTimeLeft(score*1000,"ss:mm"));   
     window.history.pushState({}, "", "/stopgame-page");
     const redirectEvent = new PopStateEvent("popstate");
     window.dispatchEvent(redirectEvent);

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable linebreak-style */
-import React from "react";
+import React, { useEffect } from "react";
 import "./HomePage.scss";
 import keyboardLogo from "../../assets/Icon-keyboard.svg";
 import playIcon from "../../assets/Icon-play.svg";
@@ -12,6 +12,13 @@ export default function HomePage() {
   const { handleChange, handleSubmit, values, errors } = useForm(validate);
   saveDataToLocalStorage("scoresList",[]);
   saveDataToLocalStorage("currentGame",1);
+  const playerNameRef = React.createRef();
+  useEffect(() => {
+      if (playerNameRef.current) {
+        playerNameRef.current.focus();
+      }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="container">
       <div className="keyboardImage">
@@ -32,6 +39,7 @@ export default function HomePage() {
           placeholder="TYPE YOUR NAME"
           value={values.username}
           onChange={handleChange}
+          ref={playerNameRef}
         />
         {errors.username && <p>{errors.username}</p>}
         <select
