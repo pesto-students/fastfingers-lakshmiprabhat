@@ -2,14 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { formatTimeLeft } from "../common/Util";
 
-export default function ScoreBoard({ gameResults }) {
+export default function ScoreBoard({ scores }) {
   const bestScore = Math.max(
-    ...gameResults.map(({ score }) => {
+    ...scores.map(({ score }) => {
       return score;
     })
   );
 
-  const content = gameResults.map(({ gameId, score }) => {
+  const content = scores.map(({ gameId, score }) => {
     return (
       <div key={gameId}>
         {score === bestScore ? (
@@ -33,5 +33,5 @@ export default function ScoreBoard({ gameResults }) {
 }
 
 ScoreBoard.propTypes = {
-  gameResults: PropTypes.array
+  scores: PropTypes.array
 };
