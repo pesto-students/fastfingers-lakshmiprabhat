@@ -3,7 +3,6 @@ import ProtoTypes from "prop-types";
 import "./GamePage.scss";
 import Timer from "./Timer";
 import data from "../common/data/dictionary.json";
-import SetColorsOnRandomWord from "./SetColorsOnRandomWord";
 import {getDataFromLocalStorage} from "../common/Util";
 
 export default function WordPage({ handleStopGame }) {
