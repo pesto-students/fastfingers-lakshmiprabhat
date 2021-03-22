@@ -5,7 +5,7 @@ import iconGamepad from "../../../assets/Icon-gamepad.svg";
 import { getDataFromLocalStorage,formatTimeLeft } from "../Util";
 import "./Header.scss";
 
-export default function Header({ handleScoreChange,showScore }) {
+export default function Header({ handleScoreChange,showTimer }) {
   const userName = getDataFromLocalStorage("username");
   let level = "";
   const difficultyLevel = getDataFromLocalStorage("difficultyLevel");
@@ -18,7 +18,7 @@ export default function Header({ handleScoreChange,showScore }) {
   } else if (difficultyLevel >= 2) level = "HARD";
 
   useEffect(() => {
-    if (showScore) {
+    if (showTimer) {
         const timeout = setInterval(() => {
           setScore(score + 1);
             handleScoreChange(score + 1);
@@ -30,7 +30,7 @@ export default function Header({ handleScoreChange,showScore }) {
     else {
       setScore(0);
     }
-}, [score, showScore])// eslint-disable-line react-hooks/exhaustive-deps
+}, [score, showTimer])// eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="gameHeader">
@@ -42,7 +42,7 @@ export default function Header({ handleScoreChange,showScore }) {
       <div className="gameDetails">
         <img src={iconGamepad} alt="gamepad" />
         <p className="gameLevel">LEVEL : {level}</p>
-        {showScore ? <p className="headerTitleRight">SCORE: {formatTimeLeft(score*1000)} </p> :''
+        {showTimer ? <p className="headerTitleRight">SCORE: {formatTimeLeft(score*1000,"mm:ss")} </p> :''
         }
       </div>
     </div>
@@ -51,5 +51,5 @@ export default function Header({ handleScoreChange,showScore }) {
 
 Header.ProtoTypes = {
   handleScoreChange: ProtoTypes.func.isRequired,
-  showScore: ProtoTypes.bool.isRequired
+  showTimer: ProtoTypes.bool.isRequired
 };

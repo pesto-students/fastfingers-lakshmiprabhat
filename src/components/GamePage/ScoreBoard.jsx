@@ -1,29 +1,31 @@
 import React from 'react';
-import {formatTimeLeft, getDataFromLocalStorage} from "../common/Util";
-import "./GamePage.scss";
+import PropTypes from "prop-types";
+import { formatTimeLeft } from "../common/Util";
 
-export default function ScoreBoard(){
-    let scoresList = getDataFromLocalStorage("scoresList");    
-    const highScore = Math.max(...scoresList.map(({ score }) => { return score }));
+export default function ScoreBoard({ gameResults }) {
+    const bestScore = Math.max(...gameResults.map(({ score }) => { return score }));
 
-    const content = scoresList.map(({ currentGame, score }) => {
+    const content = gameResults.map(({ gameId, score }) => {
         return (
-            <div key={currentGame}>
+            <div key={gameId}>
                 {
-                    score === highScore ?
+                    score === bestScore ?
                         <p className="personalBest">PERSONAL BEST</p>
                         : ''
                 }
-                <p className="scoreList">Game {currentGame}  : {formatTimeLeft(score*1000)}</p>
+                <p className="scoreList">Game {gameId}  : {formatTimeLeft(score, "mm:ss")}</p>
             </div>
         );
     });
-    
-    return(
+
+    return (
         <div className="scoreBoard">
             <p className="scoreBoardTitle">SCORE BOARD</p>
-            {content}     
+            {content}
         </div>
     );
+}
 
+ScoreBoard.propTypes = {
+    gameResults: PropTypes.array
 }
