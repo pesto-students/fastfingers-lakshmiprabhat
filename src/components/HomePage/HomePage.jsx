@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import "./HomePage.scss";
 import keyboardLogo from "../../assets/Icon-keyboard.svg";
 import playIcon from "../../assets/Icon-play.svg";
-import { levels, saveDataToLocalStorage } from "../common/Util.jsx";
+import { getDataFromLocalStorage, levels, saveDataToLocalStorage } from "../common/Util.jsx";
 import useForm from "./useForm";
 import validate from "../common/ValidateInputs";
 
@@ -14,10 +14,14 @@ export default function HomePage() {
   saveDataToLocalStorage("currentGame",1);
   const playerNameRef = React.createRef();
   useEffect(() => {
+     let sessionPlayerName = getDataFromLocalStorage('username');
+     if(sessionPlayerName){
+       values.username=sessionPlayerName;
+     }
       if (playerNameRef.current) {
         playerNameRef.current.focus();
       }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="container">
