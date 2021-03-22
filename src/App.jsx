@@ -4,7 +4,6 @@ import React from 'react';
 import HomePage from "./components/HomePage/HomePage";
 import GamePage from "./components/GamePage/GamePage";
 import Route from "./components/common/CustomRouter";
-import StopGame from "./components/StopGame/StopGame";
 import "./App.css";
 
 export default function App() {
@@ -15,9 +14,6 @@ export default function App() {
       </Route>
       <Route path="/game-page">
         <GamePage />
-      </Route>
-      <Route path="/stopgame-page">
-        <StopGame/>
       </Route>
     </div>
   );
