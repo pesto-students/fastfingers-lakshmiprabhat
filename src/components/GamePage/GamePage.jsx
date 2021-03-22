@@ -56,7 +56,7 @@ export default function GamePage() {
     let scoreResults= getDataFromLocalStorage("scoresList");
     let currentGame = getDataFromLocalStorage("currentGame");
     scoreResults.push({currentGame,score});
-    if (scoreResults.length > 7){scoreResults.shift();}
+    if (scoreResults.length > 10){scoreResults.shift();}
     saveDataToLocalStorage("currentGame",Number(currentGame)+1);
     saveDataToLocalStorage("scoresList",scoreResults);
     saveDataToLocalStorage('score',formatTimeLeft(score*1000,"ss:mm"));   
