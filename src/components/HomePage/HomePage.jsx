@@ -4,19 +4,15 @@ import React, { useEffect } from "react";
 import "./HomePage.scss";
 import keyboardLogo from "../../assets/Icon-keyboard.svg";
 import playIcon from "../../assets/Icon-play.svg";
-import {
-  levels,
-  saveDataToLocalStorage
-} from "../common/Util.jsx";
+import { levels } from "../common/Util.jsx";
 import useForm from "./useForm";
 import validate from "../common/ValidateInputs";
 
 export default function HomePage() {
   const { handleChange, handleSubmit, values, errors } = useForm(validate);
-  saveDataToLocalStorage("scoresList", []);
-  saveDataToLocalStorage("currentGame", 1);
   const playerNameRef = React.createRef();
   useEffect(() => {
+    localStorage.clear();
     if (playerNameRef.current) {
       playerNameRef.current.focus();
     }
