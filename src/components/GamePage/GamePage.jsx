@@ -25,7 +25,6 @@ export default function GamePage() {
     setShowTimer(false);
   };
   const handleQuit = () => {
-    localStorage.clear();
     window.history.pushState({}, "", "/");
     const navEvent = new PopStateEvent("popstate");
     window.dispatchEvent(navEvent);
@@ -46,8 +45,7 @@ export default function GamePage() {
         <div className="contentCenter">
           <p className="score">SCORE : GAME {gameId - 1}</p>
           <p className="time">{formatTimeLeft(score * 1000, "mm:ss")}</p>
-          <p className="highScore">New High Score : </p>
-          <button className="buttonArea" onClick={handlePlayAgain}>
+         <button className="buttonArea" onClick={handlePlayAgain}>
             <img className="reloadIcon" src={iconReload} alt="playagain" />
             <span className="playAgain">PLAY AGAIN</span>
           </button>

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { saveDataToLocalStorage } from "../common/Util.jsx";
+import { useState, useEffect } from "react";
+import { getDataFromLocalStorage,saveDataToLocalStorage } from "../common/Util.jsx";
 
 const useForm = (validate) => {
   const [values, setValues] = useState({ username: "", difficultyLevel: "1" });
@@ -21,6 +21,12 @@ const useForm = (validate) => {
       window.dispatchEvent(redirectEvent);
     }
   };
+  useEffect(()=> {
+    let sessionPlayerName = getDataFromLocalStorage("username");
+    if (sessionPlayerName) {
+      setValues({ ...values, username: sessionPlayerName });
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
   return { handleChange, handleSubmit, values, errors };
 };
 export default useForm;
