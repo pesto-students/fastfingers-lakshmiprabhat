@@ -58,18 +58,22 @@
     flex-direction: column;
     width: 50%;
     height: 95%;
-    margin-left: 20%;
+    margin: 3% 0 0 12%;
   }
   .randomWord {
     font-size: 3rem;
     color: white;
     font-weight: 500;
     margin: 10% 0 0 15%;
+    text-transform: uppercase;
   }
   .inputWordArea {
     width: 50%;
     height: 20%;
-    margin-left: 10%;
+    margin-left: 10%;        
+  }
+  .playerInput {
+    text-transform: uppercase;
   }
   .gameStop {
     display: flex;

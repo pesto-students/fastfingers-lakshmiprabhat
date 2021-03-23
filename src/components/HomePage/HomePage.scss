@@ -62,6 +62,7 @@ input {
   background-color: var(--white);
   padding-left: 20px;
   outline: none;
+  text-transform: uppercase;
 }
 .formArea p {
   color: var(--lightRed);
@@ -81,6 +82,10 @@ select {
   opacity: 0.59;
   box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
   border: solid 1px var(--white);
+  outline: none;
+}
+option {
+  padding-left: 10%;
 }
 .buttonStyle {
   display: flex;

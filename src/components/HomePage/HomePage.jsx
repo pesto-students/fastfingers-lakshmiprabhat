@@ -5,7 +5,6 @@ import "./HomePage.scss";
 import keyboardLogo from "../../assets/Icon-keyboard.svg";
 import playIcon from "../../assets/Icon-play.svg";
 import {
-  getDataFromLocalStorage,
   levels,
   saveDataToLocalStorage
 } from "../common/Util.jsx";
@@ -18,10 +17,6 @@ export default function HomePage() {
   saveDataToLocalStorage("currentGame", 1);
   const playerNameRef = React.createRef();
   useEffect(() => {
-    let sessionPlayerName = getDataFromLocalStorage("username");
-    if (sessionPlayerName) {
-      values.username = sessionPlayerName;
-    }
     if (playerNameRef.current) {
       playerNameRef.current.focus();
     }

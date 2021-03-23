@@ -4,6 +4,7 @@ import "./GamePage.scss";
 import Timer from "./Timer";
 import data from "../common/data/dictionary.json";
 import {getDataFromLocalStorage} from "../common/Util";
+import SetColorsOnRandomWord from "./SetColorsOnRandomWord";
 
 export default function WordPage({ handleStopGame }) {
 const [randomWord, setRandomWord] = useState('');
@@ -58,11 +59,12 @@ return (
             handleStopGame={handleStopGame}
         ></Timer>            
         <div className="randomWord">
-        <p>{randomWord}</p>  
+        <SetColorsOnRandomWord randomWord={randomWord} playerInput={playerInput}/>  
         </div>
         <div className="inputWordArea">
             <input
             type="text"
+            className="playerInput"
             value={playerInput}
             onChange={handleTextChange}
             ref={playerInputRef}
