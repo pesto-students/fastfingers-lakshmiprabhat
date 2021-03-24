@@ -1,0 +1,136 @@
+:root {
+  --lightRed: #ff5155;
+  --white: #ffffff;
+  --evergreen: #032228;
+}
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: url(../../assets/Background-image.svg),
+    linear-gradient(to top, #063c47, #000000);
+  background-blend-mode: multiply;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 90vw;
+}
+.gameContent {
+  display: flex;
+  width: 100%;
+  height: 70%;
+}
+.scoreBoard {
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  border: solid 3px var(--lightRed);
+  height: 95%;
+  width: 25%;
+  margin: 1% 0 0 2%;
+  color: var(--lightRed);
+}
+.scoreBoardTitle {
+   font-size: 25px;  
+   margin: 0 0 2% 17%;   
+}
+.personalBest {
+ color: var(--lightRed);
+ font-size: 11px;
+ margin: 3% 0 0 7%;
+}
+.scoreList {
+  color: var(--white);
+  font-size: 20px;
+  margin: 1% 0 0 5%;
+}
+.playArea {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 95%;
+  margin: 3% 0 0 12%;
+}
+.randomWord {
+  font-size: 3rem;
+  color: white;
+  font-weight: 500;
+  margin: 10% 0 0 12%;
+  text-transform: uppercase;
+}
+.inputWordArea {
+  width: 50%;
+  height: 20%;
+  margin-left: 10%;        
+}
+.playerInput {
+  text-transform: uppercase;
+}
+.gameStop {
+  display: flex;
+  width: 100%;
+  height: 10%;
+  font-family: 'Metal Mania';
+}
+.stopButton {
+  font-size: 35px;
+  color: var(--lightRed);
+  text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
+  background: none;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Metal Mania';
+}
+.contentCenter{
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  margin-top: 4%;
+  justify-content: center;
+  color: var(--white);
+}
+.score {
+  font-size: 60px;
+}
+.time {
+  font-size: 70px;
+  margin-left: 5%;
+}
+.highScore{
+  font-size: 40px;
+}
+.playAgain{
+  font-size: 40px;
+  color: var(--lightRed);margin-top:0;
+  font-family: 'Metal Mania';
+  cursor: pointer;
+   }
+   .buttonArea{
+       display:flex;
+       background: none;
+       width: 40%;
+       outline: none;
+       margin: 2% 0 0 15%;
+   }
+.reloadIcon{
+  width: 38px;
+  margin-right: 2%;
+}
+.quit{
+background: none;
+font-size: 30px;
+color: var(--lightRed);
+margin: 7% 0 0 5%;
+cursor: pointer;
+outline: none;
+font-family: 'Metal Mania';
+}
