@@ -79,6 +79,7 @@
     display: flex;
     width: 100%;
     height: 10%;
+    font-family: 'Metal Mania';
   }
   .stopButton {
     font-size: 35px;
@@ -87,6 +88,7 @@
     background: none;
     cursor: pointer;
     outline: none;
+    font-family: 'Metal Mania';
   }
   .contentCenter{
     display: flex;
@@ -109,6 +111,7 @@
 .playAgain{
     font-size: 40px;
     color: var(--lightRed);margin-top:0;
+    font-family: 'Metal Mania';
      }
      .buttonArea{
          display:flex;
@@ -125,8 +128,9 @@
   background: none;
   font-size: 30px;
   color: var(--lightRed);
-  margin: 7% 0 0 2%;
+  margin: 7% 0 0 5%;
   cursor: pointer;
   outline: none;
+  font-family: 'Metal Mania';
 }
   
