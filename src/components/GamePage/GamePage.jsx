@@ -32,7 +32,9 @@ export default function GamePage() {
   const handlePlayAgain = () => {
     setShowTimer(true);
   };
-
+  const getHighScore = ()=> {
+    return (scores.reduce((acc, val) => acc = acc > val.score ? acc : val.score, 0))/1000;
+  }
   return (
     <div className="gameContainer">
       <Header handleScoreChange={handleScoreChange} showTimer={showTimer} />
@@ -45,6 +47,9 @@ export default function GamePage() {
         <div className="contentCenter">
           <p className="score">SCORE : GAME {gameId - 1}</p>
           <p className="time">{formatTimeLeft(score * 1000, "mm:ss")}</p>
+         { 
+          score === getHighScore() ?
+         <p className="highScore">New High Score : {formatTimeLeft(score * 1000, "mm:ss")}</p>: ''}
          <button className="buttonArea" onClick={handlePlayAgain}>
             <img className="reloadIcon" src={iconReload} alt="playagain" />
             <span className="playAgain">PLAY AGAIN</span>
